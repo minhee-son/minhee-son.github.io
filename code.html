@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>code 🐍 | [Your Name]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:wght@600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <p class="site-name"><a href="index.html">[Your Name]</a></p>
+
+    <nav>
+      <a href="index.html">about ⚡</a>
+      <a href="publications.html">publications 📚</a>
+      <a href="cv.html">cv 🌏</a>
+      <a href="code.html" class="current">code 🐍</a>
+    </nav>
+
+    <h1>code 🐍</h1>
+
+    <p>
+      Python snippets from my research — carbon accounting, energy data
+      processing, and life-cycle analysis. Code shared here is simplified
+      for illustration.
+    </p>
+
+    <p class="muted">
+      아래는 예시입니다. 실제 코드로 바꾸세요. 코드 블록을 추가하려면
+      code-block div 전체를 복사해서 붙여 넣고, 제목·설명·코드만
+      바꾸면 됩니다.
+    </p>
+
+    <!-- ======== 코드 블록 시작: 이 div를 복사해서 추가하세요 ======== -->
+    <div class="code-block">
+      <h2>Scope 2 emissions from electricity use</h2>
+      <p class="muted">시간별 전력 사용량에 배출계수를 곱해 Scope 2 배출량을 계산하는 예시.</p>
+      <pre><code class="language-python">import pandas as pd
+
+def scope2_emissions(usage_kwh: pd.Series, grid_ef: float) -> float:
+    """Calculate location-based Scope 2 emissions.
+
+    usage_kwh : hourly electricity consumption (kWh)
+    grid_ef   : grid emission factor (kgCO2e/kWh)
+    """
+    return usage_kwh.sum() * grid_ef
+
+df = pd.read_csv("datacentre_usage.csv", parse_dates=["timestamp"])
+total = scope2_emissions(df["kwh"], grid_ef=0.412)
+print(f"Annual Scope 2: {total / 1000:.1f} tCO2e")</code></pre>
+    </div>
+    <!-- ======== 코드 블록 끝 ======== -->
+
+    <div class="code-block">
+      <h2>[코드 제목]</h2>
+      <p class="muted">[코드 설명]</p>
+      <pre><code class="language-python"># 여기에 파이썬 코드를 붙여 넣으세요
+print("hello")</code></pre>
+    </div>
+
+    <h2>repositories</h2>
+    <p class="muted">
+      코드가 별도 GitHub 저장소에 있다면 아래처럼 링크를 걸 수 있어요.
+    </p>
+    <p>
+      <a href="https://github.com/minhee-son/[저장소이름]">[프로젝트 이름]</a>
+      — [한 줄 설명]
+    </p>
+
+    <footer>
+      © 2026 [Your Name] · Built with plain HTML on GitHub Pages
+    </footer>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>
